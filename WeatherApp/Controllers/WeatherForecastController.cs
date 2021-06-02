@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace weather_app.Controllers
+namespace WeatherApp.Controllers
 {
     [ApiController]
     [Route("[controller]")]

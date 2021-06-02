@@ -1,6 +1,6 @@
 using System;
 
-namespace weather_app
+namespace WeatherApp
 {
     public class WeatherForecast
     {
