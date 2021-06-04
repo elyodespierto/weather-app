@@ -13,11 +13,13 @@ namespace Repository
         {
         }
 
+        public DbSet<City> Cities { get; set; }
         public DbSet<WeatherHistoryItem> WeatherHistory { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<WeatherHistoryItem>().ToTable("WeatherHistory");
+            modelBuilder.Entity<City>().ToTable("Cities");
         }
     }
 }

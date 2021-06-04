@@ -1,36 +1,53 @@
 ﻿using Model;
-using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
+using System.Reflection;
+using System.Text.Json;
 
 namespace Repository
 {
+    public class JsonCity
+    {
+        public float id { get; set; }
+
+        public string name { get; set; }
+
+        public string country { get; set; }
+    }
+
     public static class DbInitializer
     {
         public static void Initialize(WeatherContext context)
         {
             context.Database.EnsureCreated();
 
-            //if (context.WeatherHistory.Any())
-            //{
-            //    return;   // DB has been seeded
-            //}
+            if (context.Cities.Any())
+            {
+                return;   // DB has been seeded
+            }
 
-            //var items = new WeatherHistoryItem[]
-            //{
-            //    new WeatherHistoryItem
-            //    {
-            //        Temperature = 2
-            //    }
-            //};
+            var basePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
-            //foreach (var s in items)
-            //{
-            //    context.WeatherHistory.Add(s);
-            //}
+            var path = Path.Combine(basePath, "Resources", "city.list.json").Replace("\\", "/");
 
-            //context.SaveChanges();
+            if (File.Exists(path))
+            {
+                string json = File.ReadAllText(path);
+
+                var jsoncities = JsonSerializer.Deserialize<List<JsonCity>>(json);
+
+                var items = jsoncities.Select(x => new City
+                {
+                    Code = x.id.ToString(),
+                    Country = x.country,
+                    Name = x.name,
+                });
+
+                context.Cities.AddRange(items);
+
+                context.SaveChanges();
+            }
         }
     }
 }
