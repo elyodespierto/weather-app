@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
-namespace Repository
+namespace Context
 {
     public class WeatherContext : DbContext
     {

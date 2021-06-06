@@ -6,6 +6,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Repository;
+using Context;
+using Repository.Interface;
 
 namespace WeatherApp
 {
@@ -31,6 +33,8 @@ namespace WeatherApp
             services.AddDbContext<WeatherContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            services.AddScoped<ICityRepository, CityRepository>();
+            services.AddScoped<IWeatherHistoryRepository, WeatherHistoryRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

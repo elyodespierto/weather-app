@@ -13,5 +13,9 @@ namespace Model
         public string Name { get; set; }
 
         public string Country { get; set; }
+
+        public bool Enabled { get; set; }
+
+        public string BeautyCountry => Country == "AR" ? "Argentina" : Country;
     }
 }

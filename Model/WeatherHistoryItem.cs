@@ -8,9 +8,9 @@ namespace Model
 
         public int CityId { get; set; }
 
-        public float Temperature { get; set; }
+        public double Temperature { get; set; }
 
-        public float FeelsLike { get; set; }
+        public double FeelsLike { get; set; }
 
         public DateTime Created { get; set; }
 

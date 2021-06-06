@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text.Json;
 
-namespace Repository
+namespace Context
 {
     public class JsonCity
     {
@@ -42,6 +42,7 @@ namespace Repository
                     Code = x.id.ToString(),
                     Country = x.country,
                     Name = x.name,
+                    Enabled = false
                 });
 
                 context.Cities.AddRange(items);

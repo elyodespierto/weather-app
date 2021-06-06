@@ -1,0 +1,32 @@
+<div class="row">
+   <div class="col-md-6">
+      <ng-select2 [(ngModel)]="selectedCity" [placeholder]="'Seleccione una ciudad...'" [options]="select2Options">
+      </ng-select2>
+   </div>
+   <div class="col-md-6 d-flex justify-content-around">
+      <button class="btn btn-dark" (click)="deleteCity()">Eliminar</button>
+      <button class="btn btn-dark" (click)="addCity()">Agregar</button>
+   </div>
+</div>
+
+<div class="row" *ngIf="cities">
+   <div class="col-md-12 mt-4 mb-2">
+      <h3>Ciudades Agregadas</h3>
+   </div>
+   <div class="col-md-12">
+      <table  class="table">
+         <thead>
+            <tr>
+               <th>País</th>
+               <th>Ciudad</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr *ngFor="let city of cities">
+               <td>{{ city.country }}</td>
+               <td>{{ city.name }}</td>
+            </tr>
+         </tbody>
+      </table>
+   </div>
+</div>
