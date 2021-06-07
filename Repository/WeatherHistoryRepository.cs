@@ -17,7 +17,10 @@ namespace Repository
 
         public IEnumerable<WeatherHistoryItem> GetItems(int cityId)
         {
-            return _context.WeatherHistory.Where(x => x.CityId == cityId).OrderByDescending(x => x.Created).Take(10);
+            return _context.WeatherHistory
+                .Where(x => x.CityId == cityId)
+                .OrderByDescending(x => x.Created)
+                .Take(10);
         }
 
         public void SaveItem(int cityId, double temp, double feelsLike)
